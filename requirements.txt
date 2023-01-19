@@ -6,3 +6,4 @@ numpy~=1.21.6
 opencv-python
 requests~=2.28.2
 nums_from_string
+scikit-learn
