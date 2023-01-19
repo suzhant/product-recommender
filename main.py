@@ -53,16 +53,18 @@ def predict():
     indices = similarities.argsort()[:, -6:][:, ::-1]
 
     i = 1
-    links = []
+    # links = []
+    dict = {}
     for file in indices[0][1:5]:
         print(file)
         print(filenames[file])
-        url=filenames[file]
+        url = filenames[file]
         ids = {"link" + str(i): nums_from_string.get_nums(url)[0]}
-        links.append(ids)
-        i=i+1
+        dict.update(ids)
+        i = i + 1
 
-    return jsonify(links)
+    result = {"result": dict}
+    return jsonify(result)
 
 
 if __name__ == '__main__':
