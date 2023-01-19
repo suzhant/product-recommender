@@ -54,18 +54,21 @@ def predict():
 
     i = 1
     dict = {}
-    link=[]
+    dict["result"]=[]
+    result={}
     for file in indices[0][1:5]:
         print(file)
         print(filenames[file])
         url = filenames[file]
         ids = {"link" + str(i): nums_from_string.get_nums(url)[0]}
-        dict.update(ids)
+        result.update(ids)
+        # dict.update(ids)
         i = i + 1
 
-    link.append(dict)
+    dict["result"].append(result)
+    # link.append(dict)
 
-    return jsonify(link)
+    return jsonify(dict)
 
 
 if __name__ == '__main__':
