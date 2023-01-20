@@ -52,23 +52,16 @@ def predict():
     # Find the most similar images
     indices = similarities.argsort()[:, -6:][:, ::-1]
 
-    i = 1
-    dict = {}
-    dict["result"]=[]
-    result={}
+    links={}
+    links["result"] = []
     for file in indices[0][1:5]:
         print(file)
         print(filenames[file])
         url = filenames[file]
-        ids = {"link" + str(i): nums_from_string.get_nums(url)[0]}
-        result.update(ids)
-        # dict.update(ids)
-        i = i + 1
+        # links["result"].append(nums_from_string.get_nums(url)[0])
+        links["result"].append(str(file))
 
-    dict["result"].append(result)
-    # link.append(dict)
-
-    return jsonify(dict)
+    return jsonify(links)
 
 
 if __name__ == '__main__':
