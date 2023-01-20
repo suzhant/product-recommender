@@ -5,5 +5,4 @@ tensorflow==2.10.0
 numpy~=1.21.6
 opencv-python~=4.5.3.56
 requests~=2.28.2
-nums_from_string
 scikit-learn

@@ -8,7 +8,6 @@ from sklearn.metrics.pairwise import cosine_similarity
 import cv2
 from PIL import Image
 import requests
-import nums_from_string
 
 app = Flask(__name__)
 
