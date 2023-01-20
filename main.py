@@ -31,8 +31,10 @@ def predict():
     # Preprocess the new image
     img = Image.open(requests.get(url, stream=True).raw)
     # img = image.load_img("1163.jpg", target_size=(224, 224))
+
     x = image.img_to_array(img)
-    resize = cv2.resize(x, (224, 224))
+    resize = x.resize((224, 224))
+    # resize = cv2.resize(x, (224, 224))
     x = np.expand_dims(resize, axis=0)
     x = preprocess_input(x)
 
