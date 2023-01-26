@@ -13,15 +13,12 @@ from tensorflow.keras.applications import vgg16
 # Transfer Learning for feature extraction (ResNet50) and KNN for prediction/recommendation
 #model = vgg16.VGG16(weights='imagenet', include_top=False, input_shape=(224, 224, 3))
 model = ResNet50(weights='imagenet', include_top=False, input_shape=(224, 224, 3))
-for layer in model.layers:
-    layer.trainable = False
+model.trainable=False
 
 model = tf.keras.Sequential([
     model,
     GlobalMaxPooling2D()
 ])
-model.compile(optimizer='adam', loss='binary_crossentropy', metrics=['accuracy'])
-
 
 # print(model.summary())
 def extract_features(img_path, model):
@@ -46,7 +43,6 @@ feature_list = []
 for file in tqdm(filenames):
     feature=extract_features(file, model)
     feature_list.append(feature)
-
 
 pickle.dump(feature_list, open('embedding5.pkl', 'wb'))
 pickle.dump(filenames, open('filename5.pkl', 'wb'))
